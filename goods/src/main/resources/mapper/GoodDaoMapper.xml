@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.qianfg.dao.GoodDao">
+    <select id="queryGood" resultType="good">
+        select id id,GOOD_NAME goodName,GOOD_ID goodId,GOOD_PRICE goodPrice,GOOD_TYPE goodType from SC_GOODS
+    </select>
+</mapper>

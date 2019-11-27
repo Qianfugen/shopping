@@ -1,0 +1,64 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: goods-server
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.52.128:1521:orcl
+    username: java38
+    password: 123456
+  freemarker:
+    cache: false
+    suffix: .html
+    settings:
+      number_format: 0.##
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8050/eureka/
+  instance:
+    prefer-ip-address: true
+    # 关闭自我保护,开发环境的配置
+#    lease-renewal-interval-in-seconds: 1
+#    lease-expiration-duration-in-seconds: 2
+
+mybatis:
+  configuration:
+    jdbc-type-for-null: null
+  type-aliases-package: cn.qianfg.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+stock-server:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectionTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: true
+
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 6000
+
+#监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'hystrix.stream'

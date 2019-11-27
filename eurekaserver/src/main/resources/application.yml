@@ -1,0 +1,21 @@
+#eureka 服务器端口号
+server:
+  port: 8050
+#eureka相关的配置
+eureka:
+  instance:
+    #主机名称
+    hostname: 127.0.0.1
+  client:
+    #eureka不对外提供接口
+    register-with-eureka: false
+    #是否拉取服务信息,用于注册中心集群
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8050/eureka/
+  #关闭自我保护,开发环境的配置
+#  server:
+#    enable-self-preservation: false
+
+
+

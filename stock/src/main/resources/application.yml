@@ -1,0 +1,29 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: stock-server
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.52.128:1521:orcl
+    username: java38
+    password: 123456
+  freemarker:
+    cache: false
+    suffix: .html
+    settings:
+      number_format: 0.##
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8050/eureka/
+  instance:
+    prefer-ip-address: true
+mybatis:
+  configuration:
+    jdbc-type-for-null: null
+  type-aliases-package: cn.qianfg.pojo
+  mapper-locations: classpath:mapper/*.xml

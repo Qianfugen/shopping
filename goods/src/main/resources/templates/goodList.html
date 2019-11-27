@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+</head>
+<body>
+    <div align="center">
+        <table border="1" bordercolor="red">
+            <tr>
+                <td>商品编号</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>商品分类</td>
+                <td>立即购买</td>
+            </tr>
+            <#list goods as g>
+            <tr>
+                <td>${g.goodId}</td>
+                <td>${g.goodName}</td>
+                <td>${g.goodPrice}</td>
+                <td>${g.goodType}</td>
+                <td><a href="buyGood?id=${g.id}">立即购买</a></td>
+            </tr>
+            </#list>
+        </table>
+    </div>
+</body>
+</html>

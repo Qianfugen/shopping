@@ -1,0 +1,31 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: zuul-server
+  redis:
+    host: localhost
+    port: 6379
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8050/eureka/
+
+zuul:
+  routes:
+    goods-server: /gateway/**
+    ignored-patterns: /*-server/**
+  sensitive-headers: "*"
+  host:
+    connect-timeout-millis: 10000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 50000   #socket超时
+  ratelimit:
+    key-prefix: springcloud-good
+    enabled: true
+    repository: REDIS
+    behind-proxy: true
+    default-policy:
+      limit: 100
+      quota: 100
+      refresh-interval: 60
+      type: url
